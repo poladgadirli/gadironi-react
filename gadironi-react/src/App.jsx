@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logo from './assets/logo.png';
+import languageIcon from './assets/language.png';
 
 const LOGO_URL = "https://upload.wikimedia.org/wikipedia/commons/a/a7/Camponotus_flavomarginatus_ant.jpg"; // placeholder, replaced below
 
@@ -15,6 +16,7 @@ const products = [
 ];
 
 const navLinks = ["Shirts", "T-Shirts & Polos", "Hoodies & Sweaters", "Coats & Jackets", "Trousers"];
+const languageOptions = ["English", "Azerbaijan", "Russian"];
 
 const HERO_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuBhNqlV7mum3IhvoRVJWzH1sogdWe06kIK_dXICs1yZr1Co72L_4fLEyMJTqw6ZwxP-5HGMuccSwmkMydriGetvbgtLbslpnvypOto8Xm8S-M2rmNngOMUI9bew3ou2BQh0FlndCn69CUeS3Gr0yt1y3a2Gr5PkA1PmefHYHjZqyK4j7omI89xpvK-7_URJiD-yC7TZHPZz4lCpf9DFNQ5NQGiOt1DKP5a92OiKxSt5yFCSayoMjd-lfLbbJd1Sx7xHts8fWU9SZMU";
 const NEWSLETTER_IMG = "https://lh3.googleusercontent.com/aida-public/AB6AXuAEI9sOOT73xoGb5qt8YjhgNUuFO2sUu3u3GiaBfLjF1qhUluHI2nbH1rHUA5SerSfxKahtS2OvOth2AeYXw3B3rEHn5OB0ApvqJn7rAjTHHpQ9uehThDxPet0wIGTkK5tj8mKf2hJ_fCBZvaqt4avj7vHAqYZqw2bA67YE-oQYyvbCyxst69FUi6HP1Cq8Wc1woAnbjXwF4ewcOsMBNE0uXFuJbWVjtAdE66vCsHRYDRgFIWKkWOcdsTaSeHmHh7sFluNPaHmUBho";
@@ -22,7 +24,9 @@ const GADIRONI_LOGO = "https://lh3.googleusercontent.com/aida-public/AB6AXuDrPeq
 
 // --- Sub-components ---
 
-function Navbar({ activeNav, setActiveNav }) {
+function Navbar({ activeNav, setActiveNav, activeLanguage, setActiveLanguage }) {
+  const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
+
   return (
     <header style={{
       background: "#f9f9f9",
@@ -83,6 +87,73 @@ function Navbar({ activeNav, setActiveNav }) {
               </button>
             ))}
           </nav>
+        </div>
+        {/* Language selector */}
+        <div style={{ position: "relative", display: "flex", alignItems: "center", gap: 8 }}>
+          <button
+            onClick={() => setLanguageMenuOpen(open => !open)}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              background: "#fff",
+              border: "1px solid rgba(0,0,0,0.12)",
+              borderRadius: 999,
+              padding: "6px 10px",
+              cursor: "pointer",
+              fontFamily: "'Manrope', sans-serif",
+              fontSize: 11,
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: "0.12em",
+              color: "#333",
+            }}
+          >
+            <img src={languageIcon} alt="Language" style={{ width: 16, height: 16 }} />
+            {activeLanguage}
+          </button>
+
+          {languageMenuOpen && (
+            <div style={{
+              position: "absolute",
+              top: "calc(100% + 8px)",
+              right: 0,
+              background: "#fff",
+              border: "1px solid rgba(0,0,0,0.12)",
+              borderRadius: 16,
+              boxShadow: "0 16px 40px rgba(0,0,0,0.08)",
+              padding: "12px",
+              minWidth: 180,
+              zIndex: 100,
+            }}>
+              {languageOptions.map(lang => (
+                <button
+                  key={lang}
+                  onClick={() => {
+                    setActiveLanguage(lang);
+                    setLanguageMenuOpen(false);
+                  }}
+                  style={{
+                    width: "100%",
+                    textAlign: "left",
+                    background: "transparent",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: "8px 10px",
+                    borderRadius: 12,
+                    fontFamily: "'Manrope', sans-serif",
+                    fontSize: 12,
+                    fontWeight: activeLanguage === lang ? 800 : 600,
+                    color: activeLanguage === lang ? "#000" : "#444",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                  }}
+                >
+                  {lang}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
         {/* Icons */}
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
@@ -515,6 +586,7 @@ function Footer() {
 // --- Root App ---
 export default function App() {
   const [activeNav, setActiveNav] = useState("T-Shirts & Polos");
+  const [activeLanguage, setActiveLanguage] = useState("English");
 
   return (
     <>
@@ -523,7 +595,12 @@ export default function App() {
         rel="stylesheet"
       />
       <div style={{ background: "#f9f9f9", minHeight: "100vh", fontFamily: "'Manrope', sans-serif" }}>
-        <Navbar activeNav={activeNav} setActiveNav={setActiveNav} />
+        <Navbar
+          activeNav={activeNav}
+          setActiveNav={setActiveNav}
+          activeLanguage={activeLanguage}
+          setActiveLanguage={setActiveLanguage}
+        />
         <main>
           <Hero />
           <ProductGrid />
