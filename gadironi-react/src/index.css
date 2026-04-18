@@ -596,18 +596,35 @@ img {
   }
 
   .topbar-inner {
-    padding: 16px 20px !important;
+    padding: 14px 16px 12px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px 12px !important;
   }
 
   .brand-row {
+    order: 1;
+    width: 100%;
     gap: 16px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
+    justify-content: flex-start;
+  }
+
+  .brand {
+    gap: 14px !important;
+  }
+
+  .brand-name {
+    font-size: 34px !important;
+    letter-spacing: -0.06em !important;
   }
 
   .brand-logo {
-    width: 48px;
-    height: 48px;
+    width: 74px !important;
+    height: 74px !important;
   }
 
   .nav-links {
@@ -615,21 +632,44 @@ img {
   }
 
   .lang-selector {
+    order: 2;
     margin-left: auto;
+    position: relative;
+  }
+
+  .lang-button {
+    padding: 7px 14px !important;
+    font-size: 10px !important;
+    letter-spacing: 0.16em !important;
   }
 
   .icon-actions {
-    gap: 12px;
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 22px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .hero-section {
-    min-height: 420px !important;
-    padding: 32px 0 !important;
+    min-height: 520px !important;
+    height: 520px !important;
+    padding: 0 0 18px !important;
   }
 
   .hero-content {
     flex-direction: column !important;
     align-items: flex-start !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+    padding: 0 16px !important;
+  }
+
+  .hero-copy {
+    max-width: 260px !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
   }
 
   .product-section {
@@ -696,16 +736,34 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .brand span {
-    font-size: 1.4rem;
+  .hero-title {
+    font-size: clamp(28px, 11vw, 46px) !important;
+    line-height: 0.96 !important;
+  }
+
+  .brand-name {
+    font-size: 18px !important;
   }
 
   .brand-logo {
-    width: 44px;
-    height: 44px;
+    width: 64px !important;
+    height: 64px !important;
   }
 
   .icon-actions {
-    gap: 12px;
+    gap: 26px;
+  }
+
+  .hero-section {
+    min-height: 500px !important;
+    height: 500px !important;
+  }
+
+  .hero-copy {
+    max-width: 220px !important;
+  }
+
+  .lang-button {
+    padding: 6px 12px !important;
   }
 }

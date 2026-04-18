@@ -54,7 +54,7 @@ function Navbar({ activeNav, setActiveNav, activeLanguage, setActiveLanguage }) 
               style={{ width: 96, height: 96, objectFit: "contain" }}
               onError={e => { e.target.style.display = "none"; }}
             />
-            <span style={{
+            <span className="brand-name" style={{
               fontFamily: "'Manrope', sans-serif",
               fontSize: 20,
               fontWeight: 900,
@@ -92,6 +92,7 @@ function Navbar({ activeNav, setActiveNav, activeLanguage, setActiveLanguage }) 
         {/* Language selector */}
         <div className="lang-selector" style={{ position: "relative", display: "flex", alignItems: "center", gap: 8 }}>
           <button
+            className="lang-button"
             onClick={() => setLanguageMenuOpen(open => !open)}
             style={{
               display: "flex",
@@ -217,7 +218,7 @@ function Hero() {
         justifyContent: "space-between",
         gap: 24,
       }}>
-        <h1 style={{
+        <h1 className="hero-title" style={{
           fontFamily: "'Manrope', sans-serif",
           fontSize: "clamp(48px, 7vw, 80px)",
           fontWeight: 900,
@@ -229,7 +230,7 @@ function Hero() {
         }}>
           Essential<br />Monolith
         </h1>
-        <p style={{
+        <p className="hero-copy" style={{
           color: "#fff",
           fontSize: 13,
           lineHeight: 1.7,
