@@ -36,22 +36,22 @@ function Navbar({ activeNav, setActiveNav }) {
         justifyContent: "space-between",
         alignItems: "center",
         width: "100%",
-        padding: "16px 32px",
+        padding: "12px 24px",
         maxWidth: 1440,
         margin: "0 auto",
       }}>
         {/* Logo + Nav */}
-        <div style={{ display: "flex", alignItems: "center", gap: 48 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
           <a href="#" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
             <img
               src={logo}
               alt="Gadironi Logo"
-              style={{ width: 150, height: 150, objectFit: "contain" }}
+              style={{ width: 96, height: 96, objectFit: "contain" }}
               onError={e => { e.target.style.display = "none"; }}
             />
             <span style={{
               fontFamily: "'Manrope', sans-serif",
-              fontSize: 28,
+              fontSize: 20,
               fontWeight: 900,
               letterSpacing: "-0.04em",
               color: "#000",
@@ -85,7 +85,7 @@ function Navbar({ activeNav, setActiveNav }) {
           </nav>
         </div>
         {/* Icons */}
-        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           {["search", "person", "shopping_bag"].map(icon => (
             <button key={icon} style={{
               background: "none",
