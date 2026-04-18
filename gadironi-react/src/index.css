@@ -139,6 +139,23 @@ img {
   border-color: #000;
 }
 
+.nav-links button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: inherit;
+  padding: 2px 0;
+}
+
+.nav-links button:hover {
+  color: #000;
+}
+
 .icon-actions {
   display: flex;
   align-items: center;
@@ -556,6 +573,14 @@ img {
     align-items: flex-start;
   }
 
+  .hero-content {
+    gap: 24px;
+  }
+
+  .hero-content p {
+    max-width: 100%;
+  }
+
   .product-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -570,26 +595,99 @@ img {
     width: min(1440px, calc(100% - 32px));
   }
 
-  .nav-links {
-    display: none;
+  .topbar-inner {
+    padding: 16px 20px !important;
   }
 
-  .filters-row,
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
+  .brand-row {
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .brand-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+
+  .lang-selector {
+    margin-left: auto;
+  }
+
+  .icon-actions {
+    gap: 12px;
+  }
+
+  .hero-section {
+    min-height: 420px !important;
+    padding: 32px 0 !important;
+  }
+
+  .hero-content {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .product-section {
+    padding: 40px 0 !important;
+  }
+
+  .filters-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .filter-buttons {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   .product-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .pagination {
+    gap: 24px !important;
+    flex-wrap: wrap;
+  }
+
+  .newsletter-section {
+    padding: 56px 16px !important;
+  }
+
+  .newsletter-content {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 24px;
   }
 
   .newsletter-image-wrap {
-    display: none;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  .newsletter-image-wrap img {
+    transform: translate(0, 0) !important;
+    opacity: 0.45 !important;
+  }
+
+  .footer-top {
+    gap: 24px !important;
   }
 
   .footer-links {
     grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px;
   }
 }
 

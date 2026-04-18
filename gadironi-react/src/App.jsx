@@ -28,14 +28,14 @@ function Navbar({ activeNav, setActiveNav, activeLanguage, setActiveLanguage }) 
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
 
   return (
-    <header style={{
+    <header className="topbar" style={{
       background: "#f9f9f9",
       position: "sticky",
       top: 0,
       zIndex: 50,
       borderBottom: "1px solid rgba(0,0,0,0.06)",
     }}>
-      <div style={{
+      <div className="topbar-inner" style={{
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
@@ -45,9 +45,10 @@ function Navbar({ activeNav, setActiveNav, activeLanguage, setActiveLanguage }) 
         margin: "0 auto",
       }}>
         {/* Logo + Nav */}
-        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-          <a href="#" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
+        <div className="brand-row" style={{ display: "flex", alignItems: "center", gap: 24 }}>
+          <a href="#" className="brand" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
             <img
+              className="brand-logo"
               src={logo}
               alt="Gadironi Logo"
               style={{ width: 96, height: 96, objectFit: "contain" }}
@@ -62,7 +63,7 @@ function Navbar({ activeNav, setActiveNav, activeLanguage, setActiveLanguage }) 
               textTransform: "uppercase",
             }}>GADIRONI</span>
           </a>
-          <nav style={{ display: "flex", gap: 32 }}>
+          <nav className="nav-links" style={{ display: "flex", gap: 32 }}>
             {navLinks.map(link => (
               <button
                 key={link}
@@ -89,7 +90,7 @@ function Navbar({ activeNav, setActiveNav, activeLanguage, setActiveLanguage }) 
           </nav>
         </div>
         {/* Language selector */}
-        <div style={{ position: "relative", display: "flex", alignItems: "center", gap: 8 }}>
+        <div className="lang-selector" style={{ position: "relative", display: "flex", alignItems: "center", gap: 8 }}>
           <button
             onClick={() => setLanguageMenuOpen(open => !open)}
             style={{
@@ -156,7 +157,7 @@ function Navbar({ activeNav, setActiveNav, activeLanguage, setActiveLanguage }) 
           )}
         </div>
         {/* Icons */}
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        <div className="icon-actions" style={{ display: "flex", alignItems: "center", gap: 16 }}>
           {["search", "person", "shopping_bag"].map(icon => (
             <button key={icon} style={{
               background: "none",
@@ -182,7 +183,7 @@ function Navbar({ activeNav, setActiveNav, activeLanguage, setActiveLanguage }) 
 
 function Hero() {
   return (
-    <section style={{
+    <section className="hero-section" style={{
       position: "relative",
       height: 480,
       display: "flex",
@@ -193,6 +194,7 @@ function Hero() {
     }}>
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <img
+          className="hero-bg"
           src={HERO_IMG}
           alt="Hero"
           style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(1)", opacity: 0.9 }}
@@ -203,7 +205,7 @@ function Hero() {
           background: "linear-gradient(to top, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)",
         }} />
       </div>
-      <div style={{
+      <div className="hero-content" style={{
         position: "relative",
         zIndex: 10,
         width: "100%",
@@ -263,17 +265,19 @@ function ProductCard({ product }) {
 
   return (
     <div
+      className="product-card"
       style={{ background: "#f9f9f9" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div style={{
+      <div className="product-image-wrap" style={{
         aspectRatio: "3/4",
         overflow: "hidden",
         background: "#eeeeee",
         position: "relative",
       }}>
         <img
+          className="product-image"
           src={product.img}
           alt={product.name}
           style={{
@@ -285,7 +289,7 @@ function ProductCard({ product }) {
             transition: "transform 0.7s ease",
           }}
         />
-        <button style={{
+        <button className="add-button" style={{
           position: "absolute",
           bottom: 0,
           right: 0,
@@ -302,8 +306,8 @@ function ProductCard({ product }) {
           <span className="material-symbols-outlined" style={{ fontSize: 16 }}>add</span>
         </button>
       </div>
-      <div style={{ padding: 20, display: "flex", flexDirection: "column", gap: 12 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+      <div className="product-content" style={{ padding: 20, display: "flex", flexDirection: "column", gap: 12 }}>
+        <div className="product-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
           <h3 style={{
             fontFamily: "'Manrope', sans-serif",
             fontSize: 13,
@@ -319,7 +323,7 @@ function ProductCard({ product }) {
             fontSize: 13,
           }}>{product.price}</span>
         </div>
-        <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+        <div className="color-row" style={{ display: "flex", gap: 6, alignItems: "center" }}>
           {product.colors.map((c, i) => <ColorDot key={i} color={c} active={i === 0} />)}
         </div>
       </div>
@@ -331,10 +335,10 @@ function ProductGrid() {
   const [activePage, setActivePage] = useState(1);
 
   return (
-    <section style={{ padding: "56px 32px", background: "#f3f3f4" }}>
+    <section className="product-section" style={{ padding: "56px 32px", background: "#f3f3f4" }}>
       <div style={{ maxWidth: 1440, margin: "0 auto", display: "flex", flexDirection: "column", gap: 32 }}>
         {/* Filters bar */}
-        <div style={{
+        <div className="filters-row" style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -370,7 +374,7 @@ function ProductGrid() {
         </div>
 
         {/* Grid */}
-        <div style={{
+        <div className="product-grid" style={{
           display: "grid",
           gridTemplateColumns: "repeat(4, 1fr)",
           gap: 1,
@@ -380,7 +384,7 @@ function ProductGrid() {
         </div>
 
         {/* Pagination */}
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 40, marginTop: 24 }}>
+        <div className="pagination" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 40, marginTop: 24 }}>
           {["01", "02", "03", "Next"].map((p, i) => (
             <button
               key={p}
@@ -411,13 +415,13 @@ function Newsletter() {
   const [email, setEmail] = useState("");
 
   return (
-    <section style={{
+    <section className="newsletter-section" style={{
       background: "#000",
       padding: "80px 32px",
       overflow: "hidden",
       position: "relative",
     }}>
-      <div style={{
+      <div className="newsletter-content" style={{
         maxWidth: 1440,
         margin: "0 auto",
         display: "flex",
@@ -427,7 +431,7 @@ function Newsletter() {
         position: "relative",
         zIndex: 10,
       }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 24, maxWidth: 560 }}>
+        <div className="newsletter-copy" style={{ display: "flex", flexDirection: "column", gap: 24, maxWidth: 560 }}>
           <h2 style={{
             fontFamily: "'Manrope', sans-serif",
             fontSize: "clamp(32px, 4vw, 48px)",
@@ -448,7 +452,7 @@ function Newsletter() {
           }}>
             Receive exclusive access to new architectural releases and seasonal editorials. No noise. Just the essential.
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <div className="newsletter-form" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <input
               type="email"
               value={email}
@@ -484,7 +488,7 @@ function Newsletter() {
             }}>Subscribe</button>
           </div>
         </div>
-        <div style={{ flexShrink: 0, width: 288 }}>
+        <div className="newsletter-image-wrap" style={{ flexShrink: 0, width: 288 }}>
           <img
             src={NEWSLETTER_IMG}
             alt="Journal"
@@ -504,8 +508,8 @@ function Newsletter() {
 
 function Footer() {
   return (
-    <footer style={{ background: "#000", color: "#fff", padding: "56px 32px" }}>
-      <div style={{
+    <footer className="site-footer" style={{ background: "#000", color: "#fff", padding: "56px 32px" }}>
+      <div className="footer-top" style={{
         maxWidth: 1440,
         margin: "0 auto",
         display: "flex",
@@ -530,7 +534,7 @@ function Footer() {
             margin: 0,
           }}>Elevating the garment to its architectural peak. Minimalist intent, maximum structural integrity.</p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 40 }}>
+        <div className="footer-links" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 40 }}>
           {[
             { title: "Discover", links: ["Collection", "Editorial", "Archive"] },
             { title: "Company", links: ["Sustainability", "Legal"] },
@@ -563,7 +567,7 @@ function Footer() {
           ))}
         </div>
       </div>
-      <div style={{
+      <div className="footer-bottom" style={{
         maxWidth: 1440,
         margin: "32px auto 0",
         paddingTop: 32,
