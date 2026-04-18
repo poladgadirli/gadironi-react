@@ -37,126 +37,136 @@ function Navbar({ activeNav, setActiveNav, activeLanguage, setActiveLanguage }) 
     }}>
       <div className="topbar-inner" style={{
         display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
+        flexDirection: "column",
         width: "100%",
-        padding: "12px 24px",
+        padding: "12px 24px 10px",
         maxWidth: 1440,
         margin: "0 auto",
       }}>
-        {/* Logo + Nav */}
-        <div className="brand-row" style={{ display: "flex", alignItems: "center", gap: 24 }}>
-          <a href="#" className="brand" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
-            <img
-              className="brand-logo"
-              src={logo}
-              alt="Gadironi Logo"
-              style={{ width: 96, height: 96, objectFit: "contain" }}
-              onError={e => { e.target.style.display = "none"; }}
-            />
-            <span className="brand-name" style={{
-              fontFamily: "'Manrope', sans-serif",
-              fontSize: 20,
-              fontWeight: 900,
-              letterSpacing: "-0.04em",
-              color: "#000",
-              textTransform: "uppercase",
-            }}>GADIRONI</span>
-          </a>
-          <nav className="nav-links" style={{ display: "flex", gap: 32 }}>
-            {navLinks.map(link => (
-              <button
-                key={link}
-                onClick={() => setActiveNav(link)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  fontFamily: "'Manrope', sans-serif",
-                  fontSize: 10,
-                  fontWeight: 600,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: activeNav === link ? "#000" : "#aaa",
-                  borderBottom: activeNav === link ? "1px solid #000" : "none",
-                  paddingBottom: activeNav === link ? 2 : 0,
-                  transition: "color 0.2s",
-                  padding: "2px 0",
-                }}
-              >
-                {link}
-              </button>
-            ))}
-          </nav>
-        </div>
-        {/* Language selector */}
-        <div className="lang-selector" style={{ position: "relative", display: "flex", alignItems: "center", gap: 8 }}>
-          <button
-            className="lang-button"
-            onClick={() => setLanguageMenuOpen(open => !open)}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-              background: "#fff",
-              border: "1px solid rgba(0,0,0,0.12)",
-              borderRadius: 999,
-              padding: "6px 10px",
-              cursor: "pointer",
-              fontFamily: "'Manrope', sans-serif",
-              fontSize: 11,
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              color: "#333",
-            }}
-          >
-            <img src={languageIcon} alt="Language" style={{ width: 16, height: 16 }} />
-            {activeLanguage}
-          </button>
-
-          {languageMenuOpen && (
-            <div style={{
-              position: "absolute",
-              top: "calc(100% + 8px)",
-              right: 0,
-              background: "#fff",
-              border: "1px solid rgba(0,0,0,0.12)",
-              borderRadius: 16,
-              boxShadow: "0 16px 40px rgba(0,0,0,0.08)",
-              padding: "12px",
-              minWidth: 180,
-              zIndex: 100,
-            }}>
-              {languageOptions.map(lang => (
+        <div className="topbar-top-row" style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: 24,
+          width: "100%",
+        }}>
+          {/* Logo + Nav */}
+          <div className="brand-row" style={{ display: "flex", alignItems: "center", gap: 24 }}>
+            <a href="#" className="brand" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
+              <img
+                className="brand-logo"
+                src={logo}
+                alt="Gadironi Logo"
+                style={{ width: 96, height: 96, objectFit: "contain" }}
+                onError={e => { e.target.style.display = "none"; }}
+              />
+              <span className="brand-name" style={{
+                fontFamily: "'Manrope', sans-serif",
+                fontSize: 20,
+                fontWeight: 900,
+                letterSpacing: "-0.04em",
+                color: "#000",
+                textTransform: "uppercase",
+              }}>GADIRONI</span>
+            </a>
+            <nav className="nav-links" style={{ display: "flex", gap: 32 }}>
+              {navLinks.map(link => (
                 <button
-                  key={lang}
-                  onClick={() => {
-                    setActiveLanguage(lang);
-                    setLanguageMenuOpen(false);
-                  }}
+                  key={link}
+                  onClick={() => setActiveNav(link)}
                   style={{
-                    width: "100%",
-                    textAlign: "left",
-                    background: "transparent",
+                    background: "none",
                     border: "none",
                     cursor: "pointer",
-                    padding: "8px 10px",
-                    borderRadius: 12,
                     fontFamily: "'Manrope', sans-serif",
-                    fontSize: 12,
-                    fontWeight: activeLanguage === lang ? 800 : 600,
-                    color: activeLanguage === lang ? "#000" : "#444",
+                    fontSize: 10,
+                    fontWeight: 600,
+                    letterSpacing: "0.18em",
                     textTransform: "uppercase",
-                    letterSpacing: "0.1em",
+                    color: activeNav === link ? "#000" : "#aaa",
+                    borderBottom: activeNav === link ? "1px solid #000" : "none",
+                    paddingBottom: activeNav === link ? 2 : 0,
+                    transition: "color 0.2s",
+                    padding: "2px 0",
                   }}
                 >
-                  {lang}
+                  {link}
                 </button>
               ))}
-            </div>
-          )}
+            </nav>
+          </div>
+          {/* Language selector */}
+          <div className="lang-selector" style={{ position: "relative", display: "flex", alignItems: "center", gap: 8 }}>
+            <button
+              className="lang-button"
+              onClick={() => setLanguageMenuOpen(open => !open)}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                background: "#fff",
+                border: "1px solid rgba(0,0,0,0.12)",
+                borderRadius: 999,
+                padding: "6px 10px",
+                cursor: "pointer",
+                fontFamily: "'Manrope', sans-serif",
+                fontSize: 11,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.12em",
+                color: "#333",
+              }}
+            >
+              <img src={languageIcon} alt="Language" style={{ width: 16, height: 16 }} />
+              {activeLanguage}
+            </button>
+
+            {languageMenuOpen && (
+              <div style={{
+                position: "absolute",
+                top: "calc(100% + 8px)",
+                right: 0,
+                background: "#fff",
+                border: "1px solid rgba(0,0,0,0.12)",
+                borderRadius: 16,
+                boxShadow: "0 16px 40px rgba(0,0,0,0.08)",
+                padding: "12px",
+                minWidth: 180,
+                zIndex: 100,
+              }}>
+                {languageOptions.map(lang => (
+                  <button
+                    key={lang}
+                    onClick={() => {
+                      setActiveLanguage(lang);
+                      setLanguageMenuOpen(false);
+                    }}
+                    style={{
+                      width: "100%",
+                      textAlign: "left",
+                      background: "transparent",
+                      border: "none",
+                      cursor: "pointer",
+                      padding: "8px 10px",
+                      borderRadius: 12,
+                      fontFamily: "'Manrope', sans-serif",
+                      fontSize: 12,
+                      fontWeight: activeLanguage === lang ? 800 : 600,
+                      color: activeLanguage === lang ? "#000" : "#444",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.1em",
+                    }}
+                  >
+                    {lang}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
+
+        <div className="topbar-divider" />
+
         {/* Icons */}
         <div className="icon-actions" style={{ display: "flex", alignItems: "center", gap: 16 }}>
           {["search", "person", "shopping_bag"].map(icon => (

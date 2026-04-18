@@ -64,10 +64,22 @@ img {
 
 .topbar-inner {
   display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px 0;
+}
+
+.topbar-top-row {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  padding: 16px 0;
+  width: 100%;
+}
+
+.topbar-divider {
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .brand-row {
@@ -596,35 +608,40 @@ img {
   }
 
   .topbar-inner {
-    padding: 14px 16px 12px !important;
+    padding: 8px 16px 10px !important;
     display: flex !important;
-    flex-wrap: wrap !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+
+  .topbar-top-row {
     align-items: center !important;
-    justify-content: space-between !important;
-    gap: 10px 12px !important;
+    gap: 12px !important;
   }
 
   .brand-row {
-    order: 1;
-    width: 100%;
-    gap: 16px;
+    width: auto;
+    flex: 1 1 auto;
+    gap: 12px;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-start;
+    min-width: 0;
   }
 
   .brand {
-    gap: 14px !important;
+    gap: 18px !important;
   }
 
   .brand-name {
-    font-size: 34px !important;
-    letter-spacing: -0.06em !important;
+    font-size: 18px !important;
+    letter-spacing: -0.04em !important;
   }
 
   .brand-logo {
-    width: 74px !important;
-    height: 74px !important;
+    width: 62px !important;
+    height: 62px !important;
   }
 
   .nav-links {
@@ -632,44 +649,61 @@ img {
   }
 
   .lang-selector {
-    order: 2;
-    margin-left: auto;
+    width: auto;
+    display: flex !important;
+    justify-content: flex-end;
+    align-items: center;
+    align-self: auto;
     position: relative;
+    margin-left: auto;
+    padding: 0 !important;
   }
 
   .lang-button {
-    padding: 7px 14px !important;
+    padding: 6px 14px !important;
     font-size: 10px !important;
-    letter-spacing: 0.16em !important;
+    letter-spacing: 0.14em !important;
+    min-height: 34px;
+  }
+
+  .topbar-divider {
+    display: block;
+    margin: 0;
   }
 
   .icon-actions {
-    order: 3;
     width: 100%;
     justify-content: center;
-    gap: 22px;
-    padding-top: 8px;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    gap: 26px;
+    padding-top: 4px;
   }
 
   .hero-section {
-    min-height: 520px !important;
-    height: 520px !important;
-    padding: 0 0 18px !important;
+    min-height: 500px !important;
+    height: 500px !important;
+    padding: 0 0 16px !important;
   }
 
   .hero-content {
     flex-direction: column !important;
     align-items: flex-start !important;
     justify-content: flex-end !important;
-    gap: 8px !important;
+    gap: 6px !important;
     padding: 0 16px !important;
   }
 
+  .hero-title {
+    max-width: 240px !important;
+  }
+
   .hero-copy {
-    max-width: 260px !important;
-    font-size: 12px !important;
-    line-height: 1.5 !important;
+    max-width: 220px !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .product-section {
@@ -737,30 +771,38 @@ img {
   }
 
   .hero-title {
-    font-size: clamp(28px, 11vw, 46px) !important;
-    line-height: 0.96 !important;
+    font-size: clamp(22px, 8.8vw, 36px) !important;
+    line-height: 0.98 !important;
   }
 
   .brand-name {
-    font-size: 18px !important;
+    font-size: 16px !important;
   }
 
   .brand-logo {
-    width: 64px !important;
-    height: 64px !important;
+    width: 58px !important;
+    height: 58px !important;
+  }
+
+  .topbar-inner {
+    padding: 8px 12px 10px !important;
+  }
+
+  .topbar-top-row {
+    gap: 10px !important;
   }
 
   .icon-actions {
-    gap: 26px;
+    gap: 28px;
   }
 
   .hero-section {
-    min-height: 500px !important;
-    height: 500px !important;
+    min-height: 470px !important;
+    height: 470px !important;
   }
 
   .hero-copy {
-    max-width: 220px !important;
+    max-width: 190px !important;
   }
 
   .lang-button {
