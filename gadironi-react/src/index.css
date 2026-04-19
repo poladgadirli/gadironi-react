@@ -64,10 +64,10 @@ img {
 
 .topbar-inner {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 24px;
-  padding: 12px 24px 10px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 12px 24px 8px;
 }
 
 .topbar-top-row {
@@ -77,10 +77,11 @@ img {
   gap: 24px;
   width: 100%;
   min-width: 0;
+  padding-bottom: 8px;
 }
 
 .topbar-divider {
-  display: none;
+  display: block;
   width: 100%;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -175,9 +176,12 @@ img {
 .icon-actions {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: flex-end;
+  width: 100%;
+  gap: 16px;
   flex-shrink: 0;
-  margin-left: 8px;
+  margin-left: 0;
+  padding-top: 6px;
 }
 
 .icon-actions button,
@@ -607,11 +611,7 @@ img {
   }
 }
 
-@media (max-width: 800px) {
-  .container {
-    width: min(1440px, calc(100% - 32px));
-  }
-
+@media (max-width: 768px) {
   .topbar-inner {
     padding: 8px 16px 10px !important;
     display: flex !important;
@@ -681,6 +681,12 @@ img {
     justify-content: center;
     gap: 26px;
     padding-top: 4px;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    width: min(1440px, calc(100% - 32px));
   }
 
   .hero-section {

@@ -36,22 +36,15 @@ function Navbar({ activeNav, setActiveNav, activeLanguage, setActiveLanguage }) 
       borderBottom: "1px solid rgba(0,0,0,0.06)",
     }}>
       <div className="topbar-inner" style={{
-        display: "flex",
-        flexDirection: "column",
         width: "100%",
-        padding: "12px 24px 10px",
         maxWidth: 1440,
         margin: "0 auto",
       }}>
         <div className="topbar-top-row" style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 24,
           width: "100%",
         }}>
           {/* Logo + Nav */}
-          <div className="brand-row" style={{ display: "flex", alignItems: "center", gap: 24 }}>
+          <div className="brand-row">
             <a href="#" className="brand" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
               <img
                 className="brand-logo"
@@ -168,7 +161,7 @@ function Navbar({ activeNav, setActiveNav, activeLanguage, setActiveLanguage }) 
         <div className="topbar-divider" />
 
         {/* Icons */}
-        <div className="icon-actions" style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        <div className="icon-actions">
           {["search", "person", "shopping_bag"].map(icon => (
             <button key={icon} style={{
               background: "none",
