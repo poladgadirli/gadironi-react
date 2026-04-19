@@ -1,3 +1,4 @@
+import MobileMenu from "./MobileMenu";
 import logo from "../../assets/images/logo.png";
 import { CATEGORIES } from "../../data/categories";
 import Container from "../common/Container";
@@ -29,7 +30,21 @@ export default function Header({
     >
       <Container className="topbar-inner" style={{ width: "100%" }}>
         <div className="topbar-top-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, paddingBottom: 10 }}>
-          <div className="brand-row" style={{ display: "flex", alignItems: "center", gap: 40, minWidth: 0 }}>
+          <div className="mobile-left-group">
+            <MobileMenu
+              categories={CATEGORIES.slice(1)}
+              activeNav={activeNav}
+              setActiveNav={setActiveNav}
+            />
+            <a href="#" className="brand" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", flexShrink: 0 }}>
+              <img className="brand-logo" src={logo} alt="Gadironi logo" style={{ width: 56, height: 56, objectFit: "contain" }} />
+              <span className="brand-name" style={{ fontFamily: "'Manrope', sans-serif", fontSize: 20, fontWeight: 900, letterSpacing: "-0.04em", color: "#000", textTransform: "uppercase" }}>
+                GADIRONI
+              </span>
+            </a>
+          </div>
+
+          <div className="brand-row desktop-brand-row" style={{ display: "flex", alignItems: "center", gap: 40, minWidth: 0 }}>
             <a href="#" className="brand" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", flexShrink: 0 }}>
               <img className="brand-logo" src={logo} alt="Gadironi logo" style={{ width: 56, height: 56, objectFit: "contain" }} />
               <span className="brand-name" style={{ fontFamily: "'Manrope', sans-serif", fontSize: 20, fontWeight: 900, letterSpacing: "-0.04em", color: "#000", textTransform: "uppercase" }}>

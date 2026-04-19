@@ -38,6 +38,10 @@
   min-width: 0;
 }
 
+.mobile-left-group {
+  display: none;
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -137,6 +141,19 @@
     overflow: hidden;
   }
 
+  .desktop-brand-row {
+    display: none !important;
+  }
+
+  .mobile-left-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
   .brand {
     gap: 12px !important;
     min-width: 0;
@@ -173,6 +190,10 @@
 @media (max-width: 520px) {
   .brand-name {
     font-size: 16px !important;
+  }
+
+  .mobile-left-group {
+    gap: 8px;
   }
 
   .brand-logo {
