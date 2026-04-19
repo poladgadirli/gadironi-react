@@ -64,9 +64,10 @@ img {
 
 .topbar-inner {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   gap: 24px;
-  padding: 16px 0;
+  padding: 12px 24px 10px;
 }
 
 .topbar-top-row {
@@ -75,9 +76,11 @@ img {
   align-items: center;
   gap: 24px;
   width: 100%;
+  min-width: 0;
 }
 
 .topbar-divider {
+  display: none;
   width: 100%;
   border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -129,6 +132,7 @@ img {
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .nav-links a {
@@ -173,6 +177,7 @@ img {
   align-items: center;
   gap: 20px;
   flex-shrink: 0;
+  margin-left: 8px;
 }
 
 .icon-actions button,
@@ -620,6 +625,11 @@ img {
     gap: 12px !important;
   }
 
+  .topbar-divider {
+    display: block;
+    margin: 0;
+  }
+
   .brand-row {
     width: auto;
     flex: 1 1 auto;
@@ -664,11 +674,6 @@ img {
     font-size: 10px !important;
     letter-spacing: 0.14em !important;
     min-height: 34px;
-  }
-
-  .topbar-divider {
-    display: block;
-    margin: 0;
   }
 
   .icon-actions {
