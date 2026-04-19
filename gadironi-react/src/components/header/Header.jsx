@@ -16,6 +16,10 @@ export default function Header({
   onCart,
   onUser,
 }) {
+  const handleHomeView = () => {
+    setActiveNav(CATEGORIES[0]);
+  };
+
   return (
     <header
       className="topbar"
@@ -36,7 +40,12 @@ export default function Header({
               activeNav={activeNav}
               setActiveNav={setActiveNav}
             />
-            <a href="#" className="brand" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", flexShrink: 0 }}>
+            <a
+              href="#"
+              className="brand"
+              style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", flexShrink: 0 }}
+              onClick={handleHomeView}
+            >
               <img className="brand-logo" src={logo} alt="Gadironi logo" style={{ width: 56, height: 56, objectFit: "contain" }} />
               <span className="brand-name" style={{ fontFamily: "'Manrope', sans-serif", fontSize: 20, fontWeight: 900, letterSpacing: "-0.04em", color: "#000", textTransform: "uppercase" }}>
                 GADIRONI
@@ -45,7 +54,12 @@ export default function Header({
           </div>
 
           <div className="brand-row desktop-brand-row" style={{ display: "flex", alignItems: "center", gap: 40, minWidth: 0 }}>
-            <a href="#" className="brand" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", flexShrink: 0 }}>
+            <a
+              href="#"
+              className="brand"
+              style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", flexShrink: 0 }}
+              onClick={handleHomeView}
+            >
               <img className="brand-logo" src={logo} alt="Gadironi logo" style={{ width: 56, height: 56, objectFit: "contain" }} />
               <span className="brand-name" style={{ fontFamily: "'Manrope', sans-serif", fontSize: 20, fontWeight: 900, letterSpacing: "-0.04em", color: "#000", textTransform: "uppercase" }}>
                 GADIRONI
@@ -76,10 +90,11 @@ export default function Header({
 
           <div className="lang-selector" style={{ display: "flex", alignItems: "center", gap: 16, flexShrink: 0 }}>
             <LanguageSelector activeLang={activeLang} setActiveLang={setActiveLang} />
-            <HeaderIcons cartCount={cartCount} onSearch={onSearch} onCart={onCart} onUser={onUser} />
           </div>
         </div>
         <div className="topbar-divider" />
+        <HeaderIcons cartCount={cartCount} onHome={handleHomeView} onSearch={onSearch} onCart={onCart} onUser={onUser} />
+        <div className="topbar-divider topbar-divider-bottom" />
       </Container>
     </header>
   );

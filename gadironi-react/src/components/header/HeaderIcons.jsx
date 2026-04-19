@@ -1,8 +1,23 @@
+import homeIcon from "../../assets/icons/home.png";
 import Button from "../common/Button";
 
-export default function HeaderIcons({ cartCount, onSearch, onCart, onUser }) {
+export default function HeaderIcons({ cartCount, onHome, onSearch, onCart, onUser }) {
   return (
     <div className="icon-actions" style={{ display: "flex", alignItems: "center", gap: 16 }}>
+      <Button
+        onClick={onHome}
+        title="Home"
+        className="home-icon-link"
+        style={{ display: "flex", opacity: 0.65 }}
+        onMouseEnter={(event) => {
+          event.currentTarget.style.opacity = 1;
+        }}
+        onMouseLeave={(event) => {
+          event.currentTarget.style.opacity = 0.65;
+        }}
+      >
+        <img className="home-icon" src={homeIcon} alt="Home" style={{ width: 24, height: 24, objectFit: "contain" }} />
+      </Button>
       <Button
         onClick={onSearch}
         title="Search"
@@ -16,21 +31,6 @@ export default function HeaderIcons({ cartCount, onSearch, onCart, onUser }) {
       >
         <span className="material-symbols-outlined" style={{ fontSize: 22 }}>
           search
-        </span>
-      </Button>
-      <Button
-        onClick={onUser}
-        title="Account"
-        style={{ display: "flex", opacity: 0.65 }}
-        onMouseEnter={(event) => {
-          event.currentTarget.style.opacity = 1;
-        }}
-        onMouseLeave={(event) => {
-          event.currentTarget.style.opacity = 0.65;
-        }}
-      >
-        <span className="material-symbols-outlined" style={{ fontSize: 22 }}>
-          person
         </span>
       </Button>
       <Button
@@ -69,6 +69,21 @@ export default function HeaderIcons({ cartCount, onSearch, onCart, onUser }) {
             {cartCount}
           </span>
         )}
+      </Button>
+      <Button
+        onClick={onUser}
+        title="Account"
+        style={{ display: "flex", opacity: 0.65 }}
+        onMouseEnter={(event) => {
+          event.currentTarget.style.opacity = 1;
+        }}
+        onMouseLeave={(event) => {
+          event.currentTarget.style.opacity = 0.65;
+        }}
+      >
+        <span className="material-symbols-outlined" style={{ fontSize: 22 }}>
+          person
+        </span>
       </Button>
     </div>
   );
