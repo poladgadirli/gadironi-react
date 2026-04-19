@@ -17,19 +17,50 @@ export default function MobileMenu({ categories, activeNav, setActiveNav }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [open]);
 
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    const previousTouchAction = document.body.style.touchAction;
+
+    if (open && window.innerWidth <= 768) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = previousOverflow;
+      document.body.style.touchAction = previousTouchAction;
+    }
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.body.style.touchAction = previousTouchAction;
+    };
+  }, [open]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
-      <button
-        type="button"
-        className="mobile-menu-button"
-        aria-label={open ? "Close category menu" : "Open category menu"}
-        aria-expanded={open}
-        onClick={() => setOpen((current) => !current)}
-      >
-        <span />
-        <span />
-        <span />
-      </button>
+      {!open && (
+        <button
+          type="button"
+          className="mobile-menu-button"
+          aria-label="Open category menu"
+          aria-expanded={false}
+          onClick={() => setOpen(true)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      )}
 
       <div
         className={`mobile-menu-backdrop${open ? " is-open" : ""}`}
