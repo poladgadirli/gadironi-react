@@ -102,7 +102,6 @@
   padding: 12px 0 10px;
 }
 
-/* bütün iconlar üçün container */
 .icon-actions button,
 .home-icon-link {
   display: inline-flex;
@@ -121,21 +120,15 @@
   transform: translateY(-1px);
 }
 
-/* SVG iconlar (search, bag, profile) */
 .icon-actions svg {
   width: 20px;
   height: 20px;
   stroke-width: 1.8;
 }
 
-/* HOME ICON (PNG) */
-.home-icon {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-
-  /* SVG-ə yaxın görünüş */
-  filter: grayscale(1) brightness(0) contrast(1.4);
+.icon-actions .material-symbols-outlined {
+  font-size: 22px;
+  line-height: 1;
 }
 
 /* ================= MOBILE ================= */

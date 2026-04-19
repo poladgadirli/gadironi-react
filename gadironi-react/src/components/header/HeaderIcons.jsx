@@ -1,4 +1,3 @@
-import homeIcon from "../../assets/icons/home.png";
 import Button from "../common/Button";
 
 export default function HeaderIcons({ cartCount, onHome, onSearch, onCart, onUser }) {
@@ -16,7 +15,9 @@ export default function HeaderIcons({ cartCount, onHome, onSearch, onCart, onUse
           event.currentTarget.style.opacity = 0.65;
         }}
       >
-        <img className="home-icon" src={homeIcon} alt="Home" />
+        <span className="material-symbols-outlined" style={{ fontSize: 22 }}>
+          home
+        </span>
       </Button>
       <Button
         onClick={onSearch}
