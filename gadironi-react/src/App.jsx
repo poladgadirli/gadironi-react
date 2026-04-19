@@ -367,7 +367,7 @@ function ProductGrid() {
               }}>{label}</button>
             ))}
           </div>
-          <span style={{
+          <span className="result-count" style={{
             fontFamily: "'Manrope', sans-serif",
             fontSize: 10,
             letterSpacing: "0.3em",

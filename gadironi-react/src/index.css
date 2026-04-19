@@ -616,6 +616,10 @@ img {
     padding-inline: 18px;
   }
 
+  .result-count {
+    padding-inline: 18px;
+  }
+
   .topbar-inner {
     padding: 8px 16px 10px !important;
     display: flex !important;
