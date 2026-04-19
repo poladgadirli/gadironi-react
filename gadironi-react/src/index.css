@@ -617,7 +617,16 @@ img {
     overflow-x: hidden;
   }
 
+  .filters-row {
+    overflow: visible;
+  }
+
   .filter-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
     padding-inline: 18px;
     min-width: 0;
   }
@@ -720,20 +729,27 @@ img {
   }
 
   .dropdown {
+    width: 100%;
     min-width: 0;
     max-width: 100%;
+    position: relative;
   }
 
   .dropdown-trigger {
+    width: 100%;
     max-width: 100%;
+    justify-content: space-between;
   }
 
   .dropdown-menu {
-    left: auto !important;
-    right: 0 !important;
-    min-width: min(200px, calc(100vw - 36px));
-    max-width: calc(100vw - 36px);
+    left: 0 !important;
+    right: auto !important;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
     overflow-x: hidden;
+    box-sizing: border-box;
+    z-index: 80;
   }
 }
 
@@ -781,7 +797,6 @@ img {
 
   .filter-buttons {
     width: 100%;
-    justify-content: space-between;
     flex-wrap: wrap;
   }
 
