@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import logo from "./assets/logo.png";
 
 const HERO_IMG =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuBhNqlV7mum3IhvoRVJWzH1sogdWe06kIK_dXICs1yZr1Co72L_4fLEyMJTqw6ZwxP-5HGMuccSwmkMydriGetvbgtLbslpnvypOto8Xm8S-M2rmNngOMUI9bew3ou2BQh0FlndCn69CUeS3Gr0yt1y3a2Gr5PkA1PmefHYHjZqyK4j7omI89xpvK-7_URJiD-yC7TZHPZz4lCpf9DFNQ5NQGiOt1DKP5a92OiKxSt5yFCSayoMjd-lfLbbJd1Sx7xHts8fWU9SZMU";
@@ -729,6 +730,12 @@ function Navbar({ activeNav, setActiveNav, activeLang, setActiveLang, cartCount,
         <div className="topbar-top-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, paddingBottom: 10 }}>
           <div className="brand-row" style={{ display: "flex", alignItems: "center", gap: 40, minWidth: 0 }}>
             <a href="#" className="brand" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", flexShrink: 0 }}>
+              <img
+                className="brand-logo"
+                src={logo}
+                alt="Gadironi logo"
+                style={{ width: 56, height: 56, objectFit: "contain" }}
+              />
               <span className="brand-name" style={{ fontFamily: "'Manrope', sans-serif", fontSize: 20, fontWeight: 900, letterSpacing: "-0.04em", color: "#000", textTransform: "uppercase" }}>
                 GADIRONI
               </span>
