@@ -561,8 +561,9 @@ function Dropdown({ label, options, value, onChange, primary }) {
   }, []);
 
   return (
-    <div ref={ref} style={{ position: "relative" }}>
+    <div ref={ref} className="dropdown" style={{ position: "relative" }}>
       <button
+        className="dropdown-trigger"
         onClick={() => setOpen((current) => !current)}
         style={{
           background: primary ? "#000" : "transparent",
@@ -586,6 +587,7 @@ function Dropdown({ label, options, value, onChange, primary }) {
       </button>
       {open && (
         <div
+          className="dropdown-menu"
           style={{
             position: "absolute",
             top: "calc(100% + 4px)",
