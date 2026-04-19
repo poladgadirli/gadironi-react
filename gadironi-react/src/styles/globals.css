@@ -1,0 +1,45 @@
+:root {
+  font-family: "Noto Serif", serif;
+  color: #1a1c1c;
+  background: #f9f9f9;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page-shell {
+  min-height: 100vh;
+}
+
+.container {
+  width: min(1440px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+.brand span,
+.hero-content h1,
+.newsletter-copy h2,
+.footer-brand span,
+.product-header h3,
+.filters-row button,
+.result-count,
+.footer-links h4,
+.footer-links a,
+.footer-bottom,
+.nav-links a,
+.newsletter-form input,
+.newsletter-form button {
+  font-family: "Manrope", sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 800px) {
+  .container {
+    width: min(1440px, calc(100% - 32px));
+  }
+}

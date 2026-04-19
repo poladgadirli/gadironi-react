@@ -1,0 +1,38 @@
+.dropdown {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.dropdown-trigger {
+  max-width: 100%;
+}
+
+.dropdown-menu {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .dropdown {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    position: relative;
+  }
+
+  .dropdown-trigger {
+    width: 100%;
+    max-width: 100%;
+    justify-content: space-between;
+  }
+
+  .dropdown-menu {
+    left: 0 !important;
+    right: auto !important;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    z-index: 80;
+  }
+}
