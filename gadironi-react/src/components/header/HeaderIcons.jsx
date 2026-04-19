@@ -16,7 +16,7 @@ export default function HeaderIcons({ cartCount, onHome, onSearch, onCart, onUse
           event.currentTarget.style.opacity = 0.65;
         }}
       >
-        <img className="home-icon" src={homeIcon} alt="Home" style={{ width: 24, height: 24, objectFit: "contain" }} />
+        <img className="home-icon" src={homeIcon} alt="Home" />
       </Button>
       <Button
         onClick={onSearch}
