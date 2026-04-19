@@ -612,6 +612,10 @@ img {
 }
 
 @media (max-width: 768px) {
+  .filter-buttons {
+    padding-inline: 18px;
+  }
+
   .topbar-inner {
     padding: 8px 16px 10px !important;
     display: flex !important;

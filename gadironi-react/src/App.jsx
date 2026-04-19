@@ -351,7 +351,7 @@ function ProductGrid() {
           flexWrap: "wrap",
           gap: 12,
         }}>
-          <div style={{ display: "flex", gap: 12 }}>
+          <div className="filter-buttons" style={{ display: "flex", gap: 12 }}>
             {["All Items", "Filters", "Sort by"].map((label, i) => (
               <button key={label} style={{
                 background: i === 0 ? "#000" : "transparent",
