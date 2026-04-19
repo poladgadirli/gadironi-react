@@ -1,28 +1,30 @@
 import { useState } from "react";
 import { NEWSLETTER_IMG } from "../../data/products";
+import { useI18n } from "../../i18n";
 import Container from "../common/Container";
 import "./NewsletterSection.css";
 
 export default function NewsletterSection({ onToast }) {
+  const { t } = useI18n();
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
   const [error, setError] = useState("");
 
   const handleSubscribe = () => {
     if (!email.trim()) {
-      setError("Please enter your email.");
+      setError(t("newsletter.errorMissingEmail"));
       return;
     }
 
     const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     if (!valid) {
-      setError("Please enter a valid email address.");
+      setError(t("newsletter.errorInvalidEmail"));
       return;
     }
 
     setError("");
     setDone(true);
-    onToast("You're subscribed. Welcome to the Journal.");
+    onToast(t("newsletter.toastSuccess"));
     setEmail("");
     setTimeout(() => setDone(false), 3000);
   };
@@ -32,10 +34,10 @@ export default function NewsletterSection({ onToast }) {
       <Container className="newsletter-content" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 48 }}>
         <div className="newsletter-copy" style={{ display: "flex", flexDirection: "column", gap: 24, maxWidth: 560 }}>
           <h2 style={{ fontFamily: "'Manrope', sans-serif", fontSize: "clamp(32px, 4vw, 48px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.04em", textTransform: "uppercase", lineHeight: 1, margin: 0 }}>
-            The Monolith Journal
+            {t("newsletter.title")}
           </h2>
           <p style={{ fontFamily: "'Noto Serif', serif", fontSize: 14, color: "rgba(255,255,255,0.6)", lineHeight: 1.8, fontStyle: "italic", margin: 0 }}>
-            Receive exclusive access to new architectural releases and seasonal editorials. No noise. Just the essential.
+            {t("newsletter.copy")}
           </p>
 
           {done ? (
@@ -43,7 +45,7 @@ export default function NewsletterSection({ onToast }) {
               <span className="material-symbols-outlined" style={{ fontSize: 18, color: "#6fffb0" }}>
                 check_circle
               </span>
-              Subscribed successfully.
+              {t("newsletter.successInline")}
             </div>
           ) : (
             <div className="newsletter-form" style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -57,7 +59,7 @@ export default function NewsletterSection({ onToast }) {
                 onKeyDown={(event) => {
                   if (event.key === "Enter") handleSubscribe();
                 }}
-                placeholder="ENTER YOUR EMAIL"
+                placeholder={t("newsletter.placeholder")}
                 style={{
                   background: "transparent",
                   border: "none",
@@ -74,7 +76,7 @@ export default function NewsletterSection({ onToast }) {
               />
               {error && <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: 9, color: "#ff6b6b", letterSpacing: "0.15em" }}>{error}</span>}
               <button onClick={handleSubscribe} style={{ alignSelf: "flex-start", color: "#fff", borderBottom: "1px solid #fff", fontFamily: "'Manrope', sans-serif", fontSize: 10, fontWeight: 900, letterSpacing: "0.3em", textTransform: "uppercase", paddingBottom: 2, marginTop: 4 }}>
-                Subscribe -
+                {t("newsletter.subscribe")}
               </button>
             </div>
           )}

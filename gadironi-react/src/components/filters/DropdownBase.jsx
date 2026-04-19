@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./Dropdown.css";
 
-export default function DropdownBase({ label, options, value, onChange, primary = false }) {
+export default function DropdownBase({ label, options, value, onChange, primary = false, getOptionLabel = (option) => option }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
@@ -34,7 +34,7 @@ export default function DropdownBase({ label, options, value, onChange, primary 
           gap: 8,
         }}
       >
-        {value || label}
+        {value ? getOptionLabel(value) : label}
         <span className="material-symbols-outlined" style={{ fontSize: 14, transform: open ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>
           expand_more
         </span>
@@ -80,7 +80,7 @@ export default function DropdownBase({ label, options, value, onChange, primary 
                 event.currentTarget.style.background = value === option ? "#f3f3f3" : "transparent";
               }}
             >
-              {option}
+              {getOptionLabel(option)}
             </button>
           ))}
         </div>

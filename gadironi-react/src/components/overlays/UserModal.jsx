@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useI18n } from "../../i18n";
 import Button from "../common/Button";
 import InputField from "./InputField";
 
 export default function UserModal({ open, onClose }) {
+  const { t } = useI18n();
   const [tab, setTab] = useState("signin");
   const [form, setForm] = useState({ email: "", password: "", name: "" });
   const [submitted, setSubmitted] = useState(false);
@@ -34,14 +36,14 @@ export default function UserModal({ open, onClose }) {
               check_circle
             </span>
             <div style={{ fontFamily: "'Manrope', sans-serif", fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase", marginTop: 16 }}>
-              {tab === "signin" ? "Welcome back." : "Account created."}
+              {tab === "signin" ? t("user.welcomeBack") : t("user.accountCreated")}
             </div>
           </div>
         ) : (
           <>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 32 }}>
               <div style={{ fontFamily: "'Manrope', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: "0.25em", textTransform: "uppercase" }}>
-                {tab === "signin" ? "Sign In" : "Create Account"}
+                {tab === "signin" ? t("user.signIn") : t("user.createAccount")}
               </div>
               <Button onClick={onClose} style={{ display: "flex" }}>
                 <span className="material-symbols-outlined" style={{ fontSize: 18 }}>
@@ -68,15 +70,15 @@ export default function UserModal({ open, onClose }) {
                     marginBottom: -1,
                   }}
                 >
-                  {value === "signin" ? "Sign In" : "Register"}
+                  {value === "signin" ? t("user.signIn") : t("user.register")}
                 </Button>
               ))}
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-              {tab === "register" && <InputField label="Full Name" type="text" value={form.name} onChange={(name) => setForm((current) => ({ ...current, name }))} />}
-              <InputField label="Email Address" type="email" value={form.email} onChange={(email) => setForm((current) => ({ ...current, email }))} />
-              <InputField label="Password" type="password" value={form.password} onChange={(password) => setForm((current) => ({ ...current, password }))} />
+              {tab === "register" && <InputField label={t("user.fullName")} type="text" value={form.name} onChange={(name) => setForm((current) => ({ ...current, name }))} />}
+              <InputField label={t("user.emailAddress")} type="email" value={form.email} onChange={(email) => setForm((current) => ({ ...current, email }))} />
+              <InputField label={t("user.password")} type="password" value={form.password} onChange={(password) => setForm((current) => ({ ...current, password }))} />
             </div>
 
             <Button
@@ -94,7 +96,7 @@ export default function UserModal({ open, onClose }) {
                 textTransform: "uppercase",
               }}
             >
-              {tab === "signin" ? "Sign In" : "Create Account"}
+              {tab === "signin" ? t("user.signIn") : t("user.createAccount")}
             </Button>
           </>
         )}

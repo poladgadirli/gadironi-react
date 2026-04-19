@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { LANGUAGE_OPTIONS } from "../../data/categories";
+import { LANGUAGE_OPTIONS, useI18n, useLanguage } from "../../i18n";
 import "./LanguageSelector.css";
 
-export default function LanguageSelector({ activeLang, setActiveLang }) {
+export default function LanguageSelector() {
   const [langOpen, setLangOpen] = useState(false);
   const langRef = useRef(null);
+  const { t } = useI18n();
+  const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
     const handler = (event) => {
@@ -39,7 +41,7 @@ export default function LanguageSelector({ activeLang, setActiveLang }) {
         <span className="material-symbols-outlined" style={{ fontSize: 14 }}>
           language
         </span>
-        {activeLang.slice(0, 2).toUpperCase()}
+        {language.toUpperCase()}
         <span className="material-symbols-outlined" style={{ fontSize: 12 }}>
           expand_more
         </span>
@@ -60,11 +62,11 @@ export default function LanguageSelector({ activeLang, setActiveLang }) {
             zIndex: 200,
           }}
         >
-          {LANGUAGE_OPTIONS.map((language) => (
+          {LANGUAGE_OPTIONS.map((option) => (
             <button
-              key={language}
+              key={option}
               onClick={() => {
-                setActiveLang(language);
+                setLanguage(option);
                 setLangOpen(false);
               }}
               style={{
@@ -72,16 +74,16 @@ export default function LanguageSelector({ activeLang, setActiveLang }) {
                 width: "100%",
                 textAlign: "left",
                 padding: "10px 16px",
-                background: activeLang === language ? "#f3f3f3" : "transparent",
+                background: language === option ? "#f3f3f3" : "transparent",
                 fontFamily: "'Manrope', sans-serif",
                 fontSize: 11,
-                fontWeight: activeLang === language ? 700 : 500,
+                fontWeight: language === option ? 700 : 500,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 color: "#000",
               }}
             >
-              {language}
+              {t(`languages.${option}`)}
             </button>
           ))}
         </div>

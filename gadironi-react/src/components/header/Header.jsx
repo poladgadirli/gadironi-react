@@ -4,18 +4,19 @@ import { CATEGORIES } from "../../data/categories";
 import Container from "../common/Container";
 import HeaderIcons from "./HeaderIcons";
 import LanguageSelector from "./LanguageSelector";
+import { useI18n } from "../../i18n";
 import "./Header.css";
 
 export default function Header({
   activeNav,
   setActiveNav,
-  activeLang,
-  setActiveLang,
   cartCount,
   onSearch,
   onCart,
   onUser,
 }) {
+  const { getCategoryLabel } = useI18n();
+
   const handleHomeView = () => {
     setActiveNav(CATEGORIES[0]);
   };
@@ -86,14 +87,14 @@ export default function Header({
                     transition: "color 0.2s",
                   }}
                 >
-                  {category}
+                  {getCategoryLabel(category)}
                 </button>
               ))}
             </nav>
           </div>
 
           <div className="lang-selector" style={{ display: "flex", alignItems: "center", gap: 16, flexShrink: 0 }}>
-            <LanguageSelector activeLang={activeLang} setActiveLang={setActiveLang} />
+            <LanguageSelector />
           </div>
         </div>
         <div className="topbar-divider" />

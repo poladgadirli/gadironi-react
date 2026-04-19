@@ -11,11 +11,12 @@ import UserModal from "../components/overlays/UserModal";
 import ProductGrid from "../components/products/ProductGrid";
 import { CATEGORIES, ITEMS_PER_PAGE } from "../data/categories";
 import { ALL_PRODUCTS } from "../data/products";
+import { useI18n } from "../i18n";
 import "./Home.css";
 
 export default function Home() {
+  const { t } = useI18n();
   const [activeNav, setActiveNav] = useState("All Items");
-  const [activeLang, setActiveLang] = useState("English");
   const [category, setCategory] = useState("All Items");
   const [sort, setSort] = useState("Default");
   const [page, setPage] = useState(1);
@@ -74,7 +75,7 @@ export default function Home() {
 
       return [...current, { ...product, qty: 1 }];
     });
-    addToast(`${product.name} added to cart`);
+    addToast(t("toast.addedToCart", { productName: product.name }));
   };
 
   const handleRemove = (id) => {
@@ -101,8 +102,6 @@ export default function Home() {
         <Header
           activeNav={activeNav}
           setActiveNav={setActiveNav}
-          activeLang={activeLang}
-          setActiveLang={setActiveLang}
           cartCount={cartCount}
           onSearch={() => setSearchOpen(true)}
           onCart={() => setCartOpen(true)}

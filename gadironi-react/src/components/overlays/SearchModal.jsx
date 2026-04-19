@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { CATEGORIES } from "../../data/categories";
 import { ALL_PRODUCTS, formatPrice } from "../../data/products";
+import { useI18n } from "../../i18n";
 import Button from "../common/Button";
 
 export default function SearchModal({ open, onClose, onAddToCart }) {
+  const { getCategoryLabel, t } = useI18n();
   const [query, setQuery] = useState("");
   const inputRef = useRef(null);
 
@@ -27,7 +29,8 @@ export default function SearchModal({ open, onClose, onAddToCart }) {
     ? ALL_PRODUCTS.filter(
         (product) =>
           product.name.toLowerCase().includes(query.toLowerCase()) ||
-          product.category.toLowerCase().includes(query.toLowerCase()),
+          product.category.toLowerCase().includes(query.toLowerCase()) ||
+          getCategoryLabel(product.category).toLowerCase().includes(query.toLowerCase()),
       )
     : [];
 
@@ -44,7 +47,7 @@ export default function SearchModal({ open, onClose, onAddToCart }) {
             ref={inputRef}
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search products..."
+            placeholder={t("search.placeholder")}
             style={{
               flex: 1,
               border: "none",
@@ -69,7 +72,7 @@ export default function SearchModal({ open, onClose, onAddToCart }) {
           <div>
             {results.length === 0 ? (
               <div style={{ padding: "32px 24px", textAlign: "center", color: "#999", fontFamily: "'Manrope', sans-serif", fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase" }}>
-                No results for "{query}"
+                {t("search.noResults", { query })}
               </div>
             ) : (
               results.map((product) => (
@@ -89,7 +92,7 @@ export default function SearchModal({ open, onClose, onAddToCart }) {
                       {product.name}
                     </div>
                     <div style={{ fontFamily: "'Manrope', sans-serif", fontSize: 10, color: "#999", textTransform: "uppercase", letterSpacing: "0.12em", marginTop: 4 }}>
-                      {product.category}
+                      {getCategoryLabel(product.category)}
                     </div>
                   </div>
                   <span style={{ fontFamily: "'Noto Serif', serif", fontStyle: "italic", fontSize: 13 }}>{formatPrice(product.price)}</span>
@@ -109,7 +112,7 @@ export default function SearchModal({ open, onClose, onAddToCart }) {
                       textTransform: "uppercase",
                     }}
                   >
-                    Add
+                    {t("search.add")}
                   </Button>
                 </div>
               ))
@@ -118,7 +121,7 @@ export default function SearchModal({ open, onClose, onAddToCart }) {
         ) : (
           <div style={{ padding: 24, display: "flex", flexWrap: "wrap", gap: 8 }}>
             <div style={{ width: "100%", fontFamily: "'Manrope', sans-serif", fontSize: 9, letterSpacing: "0.25em", textTransform: "uppercase", color: "#999", marginBottom: 8 }}>
-              Popular categories
+              {t("search.popularCategories")}
             </div>
             {CATEGORIES.slice(1).map((category) => (
               <Button
@@ -134,7 +137,7 @@ export default function SearchModal({ open, onClose, onAddToCart }) {
                   textTransform: "uppercase",
                 }}
               >
-                {category}
+                {getCategoryLabel(category)}
               </Button>
             ))}
           </div>

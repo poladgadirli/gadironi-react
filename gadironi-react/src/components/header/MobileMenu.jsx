@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useI18n } from "../../i18n";
 import "./MobileMenu.css";
 
 export default function MobileMenu({ categories, activeNav, setActiveNav }) {
   const [open, setOpen] = useState(false);
+  const { getCategoryLabel, t } = useI18n();
 
   useEffect(() => {
     if (!open) return undefined;
@@ -52,7 +54,7 @@ export default function MobileMenu({ categories, activeNav, setActiveNav }) {
         <button
           type="button"
           className="mobile-menu-button"
-          aria-label="Open category menu"
+          aria-label={t("mobileMenu.open")}
           aria-expanded={false}
           onClick={() => setOpen(true)}
         >
@@ -70,11 +72,11 @@ export default function MobileMenu({ categories, activeNav, setActiveNav }) {
 
       <aside className={`mobile-menu-panel${open ? " is-open" : ""}`} aria-hidden={!open}>
         <div className="mobile-menu-header">
-          <span className="mobile-menu-title">Categories</span>
+          <span className="mobile-menu-title">{t("mobileMenu.title")}</span>
           <button
             type="button"
             className="mobile-menu-close"
-            aria-label="Close category menu"
+            aria-label={t("mobileMenu.close")}
             onClick={() => setOpen(false)}
           >
             <span className="material-symbols-outlined" style={{ fontSize: 20 }}>
@@ -83,7 +85,7 @@ export default function MobileMenu({ categories, activeNav, setActiveNav }) {
           </button>
         </div>
 
-        <nav className="mobile-menu-nav" aria-label="Mobile category navigation">
+        <nav className="mobile-menu-nav" aria-label={t("mobileMenu.navigation")}>
           {categories.map((category) => (
             <button
               key={category}
@@ -94,7 +96,7 @@ export default function MobileMenu({ categories, activeNav, setActiveNav }) {
                 setOpen(false);
               }}
             >
-              {category}
+              {getCategoryLabel(category)}
             </button>
           ))}
         </nav>

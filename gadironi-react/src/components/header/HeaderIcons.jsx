@@ -1,11 +1,14 @@
 import Button from "../common/Button";
+import { useI18n } from "../../i18n";
 
 export default function HeaderIcons({ cartCount, onHome, onSearch, onCart, onUser }) {
+  const { t } = useI18n();
+
   return (
     <div className="icon-actions" style={{ display: "flex", alignItems: "center", gap: 16 }}>
       <Button
         onClick={onHome}
-        title="Home"
+        title={t("header.home")}
         className="home-icon-link"
         style={{ display: "flex", opacity: 0.65 }}
         onMouseEnter={(event) => {
@@ -21,7 +24,7 @@ export default function HeaderIcons({ cartCount, onHome, onSearch, onCart, onUse
       </Button>
       <Button
         onClick={onSearch}
-        title="Search"
+        title={t("header.search")}
         style={{ display: "flex", opacity: 0.65 }}
         onMouseEnter={(event) => {
           event.currentTarget.style.opacity = 1;
@@ -36,7 +39,7 @@ export default function HeaderIcons({ cartCount, onHome, onSearch, onCart, onUse
       </Button>
       <Button
         onClick={onCart}
-        title="Cart"
+        title={t("header.cart")}
         style={{ display: "flex", position: "relative", opacity: 0.65 }}
         onMouseEnter={(event) => {
           event.currentTarget.style.opacity = 1;
@@ -73,7 +76,7 @@ export default function HeaderIcons({ cartCount, onHome, onSearch, onCart, onUse
       </Button>
       <Button
         onClick={onUser}
-        title="Account"
+        title={t("header.account")}
         style={{ display: "flex", opacity: 0.65 }}
         onMouseEnter={(event) => {
           event.currentTarget.style.opacity = 1;

@@ -1,8 +1,11 @@
 import Container from "../common/Container";
+import { useI18n } from "../../i18n";
 import ProductCard from "./ProductCard";
 import "./ProductGrid.css";
 
 export default function ProductGrid({ products, onAddToCart, page, setPage, totalPages }) {
+  const { t } = useI18n();
+
   return (
     <Container style={{ display: "flex", flexDirection: "column", gap: 32 }}>
       {products.length > 0 ? (
@@ -13,14 +16,14 @@ export default function ProductGrid({ products, onAddToCart, page, setPage, tota
         </div>
       ) : (
         <div style={{ padding: "80px 0", textAlign: "center", color: "#aaa", fontFamily: "'Manrope', sans-serif", fontSize: 11, letterSpacing: "0.25em", textTransform: "uppercase" }}>
-          No products in this category
+          {t("productGrid.empty")}
         </div>
       )}
 
       {totalPages > 1 && (
         <div className="pagination" style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 40, marginTop: 8 }}>
           <button onClick={() => setPage((current) => Math.max(1, current - 1))} disabled={page === 1} style={{ color: page === 1 ? "#ccc" : "#5f5e5e" }}>
-            Prev
+            {t("pagination.prev")}
           </button>
           {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => (
             <button
@@ -35,7 +38,7 @@ export default function ProductGrid({ products, onAddToCart, page, setPage, tota
             </button>
           ))}
           <button onClick={() => setPage((current) => Math.min(totalPages, current + 1))} disabled={page === totalPages} style={{ color: page === totalPages ? "#ccc" : "#5f5e5e" }}>
-            Next
+            {t("pagination.next")}
           </button>
         </div>
       )}

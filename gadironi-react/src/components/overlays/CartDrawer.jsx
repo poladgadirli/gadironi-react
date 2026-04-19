@@ -1,7 +1,9 @@
 import { formatPrice } from "../../data/products";
+import { useI18n } from "../../i18n";
 import Button from "../common/Button";
 
 export default function CartDrawer({ open, onClose, items, onRemove, onQtyChange }) {
+  const { t } = useI18n();
   const total = items.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   return (
@@ -25,7 +27,7 @@ export default function CartDrawer({ open, onClose, items, onRemove, onQtyChange
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "24px 28px", borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
           <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: 11, fontWeight: 800, letterSpacing: "0.25em", textTransform: "uppercase" }}>
-            Cart {items.length > 0 && `(${items.reduce((sum, item) => sum + item.qty, 0)})`}
+            {t("cart.title")} {items.length > 0 && `(${items.reduce((sum, item) => sum + item.qty, 0)})`}
           </span>
           <Button onClick={onClose} style={{ display: "flex" }}>
             <span className="material-symbols-outlined" style={{ fontSize: 20 }}>
@@ -41,7 +43,7 @@ export default function CartDrawer({ open, onClose, items, onRemove, onQtyChange
                 shopping_bag
               </span>
               <div style={{ fontFamily: "'Manrope', sans-serif", fontSize: 10, letterSpacing: "0.25em", textTransform: "uppercase" }}>
-                Your cart is empty
+                {t("cart.empty")}
               </div>
             </div>
           ) : (
@@ -74,7 +76,7 @@ export default function CartDrawer({ open, onClose, items, onRemove, onQtyChange
         {items.length > 0 && (
           <div style={{ padding: "24px 28px", borderTop: "1px solid rgba(0,0,0,0.08)" }}>
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 20 }}>
-              <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "#777" }}>Total</span>
+              <span style={{ fontFamily: "'Manrope', sans-serif", fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "#777" }}>{t("cart.total")}</span>
               <span style={{ fontFamily: "'Noto Serif', serif", fontStyle: "italic", fontSize: 16 }}>{formatPrice(total)}</span>
             </div>
             <Button
@@ -90,7 +92,7 @@ export default function CartDrawer({ open, onClose, items, onRemove, onQtyChange
                 textTransform: "uppercase",
               }}
             >
-              Proceed to Checkout
+              {t("cart.checkout")}
             </Button>
           </div>
         )}
