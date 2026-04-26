@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Gadironi/.vs
+/Gadironi/API/bin/Debug/net8.0
+/Gadironi/API/obj
+/Gadironi/Application/obj
+/Gadironi/Domain/bin/Debug/net8.0
+/Gadironi/Domain/obj/Debug/net8.0
+/Gadironi/Domain/obj
+/Gadironi/Infrastructure/obj
