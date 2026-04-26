@@ -6,14 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Auth\Commands\" />
-    <Folder Include="Auth\DTOs\" />
-    <Folder Include="Common\" />
-    <Folder Include="Mappings\MappingProfile\" />
-    <Folder Include="Products\Commands\" />
-    <Folder Include="Products\DTOs\" />
-    <Folder Include="Products\Queries\" />
-  </ItemGroup>
-
 </Project>
